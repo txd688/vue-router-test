@@ -2,7 +2,7 @@
 
 vue-router 源码 效果简易实现
 
-文件地址：
+主要文件地址：https://github.com/txd688/vue-router-test/blob/main/src/myRouter/index.js
 
 ## Project setup
 
