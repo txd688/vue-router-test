@@ -8,7 +8,7 @@ let Vue;
 class VueRouter {
   constructor(option) {
     this.option = option;
-    // 实现数据响应式,current变化渲染页面
+    // 实现数据响应式,只要current变化就会渲染页面(绑定current一变化，使用了current的router-view组件就会重新渲染)
     Vue.util.defineReactive(
       this,
       "current",
@@ -37,6 +37,7 @@ VueRouter.install = function (_Vue) {
     之后初始化之后执行，此时已经new VueRouter了，得到了router实例
     */
     beforeCreate() {
+      // 只需要在跟实例时执行一次 this.$options是new Vue中传入的对象，如{ router,store,render: (h) => h(App)}
       if (this.$options.router) {
         Vue.prototype.$router = this.$options.router;
       }
@@ -72,6 +73,7 @@ VueRouter.install = function (_Vue) {
             href: "#" + this.to,
           },
         },
+        // 获取插槽内容：this.$slots.default
         this.$slots.default
       );
     },
